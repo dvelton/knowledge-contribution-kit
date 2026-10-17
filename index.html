@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Generate a target-specific prompt that willing teammates can run in their own AI tools."
+      content="Generate a prompt shaped to the skill, agent, or tool you are building."
     >
     <title>Knowledge Contribution Kit</title>
     <link rel="stylesheet" href="web/assets/styles.css">
@@ -40,7 +40,7 @@
             <li>
               <span>1</span>
               <div>
-                <strong>Describe the target</strong>
+                <strong>Describe what you are building</strong>
                 <p>Tell the prompt builder what you are making and where the contributor's AI can read it.</p>
               </div>
             </li>
@@ -84,8 +84,8 @@
             </label>
 
             <label>
-              Target type <span aria-hidden="true">*</span>
-              <select id="target-type" required>
+              What kind of thing are you building? <span aria-hidden="true">*</span>
+              <select id="project-type" required>
                 <option value="skill">Skill</option>
                 <option value="agent">Agent</option>
                 <option value="tool">Tool</option>
@@ -104,17 +104,17 @@
             </label>
 
             <label>
-              Where can the contributor's AI read the current target?
+              Where can the contributor's AI read the current version?
               <span aria-hidden="true">*</span>
               <textarea
-                id="target-access"
+                id="project-materials"
                 required
                 placeholder="Paste the full current text, identify files you will attach when sending the prompt, or provide a location the contributor's AI can access."
               ></textarea>
               <small>
-                A summary alone is not enough when a fuller target exists. Send
-                the target file or full text with the generated prompt if the
-                contributor's AI cannot access it directly.
+                A summary alone is not enough when a fuller version exists.
+                Send the project file or full text with the generated prompt if
+                the contributor's AI cannot access it directly.
               </small>
             </label>
 
@@ -175,7 +175,7 @@
                 Send this prompt to a willing teammate. They run it in an
                 approved AI tool, review the resulting document, obtain human
                 legal review, and decide whether to return it. Also send the
-                target file or full text unless their AI can access it directly.
+                project file or full text unless their AI can access it directly.
                 If the prompt is too long to paste, send the downloaded text
                 file as an attachment.
               </p>

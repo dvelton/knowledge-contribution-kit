@@ -1,11 +1,12 @@
 # Contribution synthesis prompt
 
-The website generates a version populated with the target name, purpose, and
+The website generates a version populated with the project name, purpose, and
 location.
 
 The synthesis prompt tells the builder's AI to:
 
-- read the current target and reviewed contribution documents;
+- read the current version of the project and the reviewed contribution
+  documents;
 - ask before searching any additional maintained source;
 - avoid contacting anyone, sending messages, or modifying files;
 - screen out identities, quotations, private links, and matter details;
@@ -16,5 +17,5 @@ The synthesis prompt tells the builder's AI to:
   owners;
 - reject stale, unsupported, overbroad, or matter-specific suggestions;
 - identify precise proposed changes and insertion points; and
-- prepare a change plan before modifying the target; and
+- prepare a change plan before modifying the project; and
 - require human lawyer review before any change is made.

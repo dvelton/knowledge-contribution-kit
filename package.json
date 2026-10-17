@@ -1,8 +1,8 @@
 {
   "name": "knowledge-contribution-kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
-  "description": "Generate target-specific prompts that willing teammates can run in their own AI tools.",
+  "description": "Generate prompts shaped to the skill, agent, or tool a builder is creating.",
   "license": "MIT",
   "engines": {
     "node": ">=20"

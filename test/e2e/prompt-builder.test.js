@@ -46,13 +46,13 @@ async function openPage(browser, port) {
 
 async function completeForm(page) {
   await page.type("#project-name", "Support escalation assistant");
-  await page.select("#target-type", "agent");
+  await page.select("#project-type", "agent");
   await page.type(
     "#project-purpose",
     "Help frontline teams prepare complete escalation summaries."
   );
   await page.type(
-    "#target-access",
+    "#project-materials",
     "Read the attached agent instructions and support guide."
   );
   await page.type(
@@ -65,7 +65,7 @@ async function completeForm(page) {
   );
 }
 
-test("builder generates target-specific contributor and synthesis prompts", async (context) => {
+test("builder generates project-shaped contributor and synthesis prompts", async (context) => {
   const server = await startServer();
   const address = server.address();
   const browser = await puppeteer.launch({
@@ -91,13 +91,16 @@ test("builder generates target-specific contributor and synthesis prompts", asyn
   );
 
   assert.match(prompt, /Support escalation assistant/);
-  assert.match(prompt, /REVIEW THE TARGET FIRST/);
-  assert.match(prompt, /KEEP ONLY TARGET-SHAPED CONTRIBUTIONS/);
+  assert.match(prompt, /REVIEW SUPPORT ESCALATION ASSISTANT FIRST/);
+  assert.match(
+    prompt,
+    /KEEP ONLY CONTRIBUTIONS THAT IMPROVE SUPPORT ESCALATION ASSISTANT/
+  );
   assert.match(prompt, /human lawyer at my organization/i);
   assert.match(synthesis, /Do not resolve disagreement by majority vote/i);
 });
 
-test("required target details prevent vague prompt generation", async (context) => {
+test("required project details prevent vague prompt generation", async (context) => {
   const server = await startServer();
   const address = server.address();
   const browser = await puppeteer.launch({
@@ -196,7 +199,10 @@ test("builder can download prompts and copy synthesis text", async (context) => 
   }
 
   assert(fs.existsSync(expectedPath));
-  assert.match(fs.readFileSync(expectedPath, "utf8"), /REVIEW THE TARGET FIRST/);
+  assert.match(
+    fs.readFileSync(expectedPath, "utf8"),
+    /REVIEW SUPPORT ESCALATION ASSISTANT FIRST/
+  );
 
   await page.click(".synthesis summary");
   await page.click("#copy-synthesis");

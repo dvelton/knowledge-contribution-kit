@@ -10,10 +10,10 @@ useful may sit with a small number of teammates who already do the work well,
 often in private day-to-day context that should not simply be handed to the
 builder.
 
-Knowledge Contribution Kit gives builders one prompt tailored to the target,
-which they can send to willing teammates. Each contributor runs it in their
-own approved AI environment and returns one reviewed document of generalized
-guidance shaped to the tool being built, without handing over the underlying
+Knowledge Contribution Kit gives builders one prompt shaped to the skill,
+agent, tool, checklist, or guide they are building. They can send it to willing
+teammates, who run it in their own approved AI environments and return one
+reviewed document of generalized guidance without handing over the underlying
 messages, email, or files.
 
 > Before inviting contributors, sending a contribution, or using workplace
@@ -25,8 +25,8 @@ messages, email, or files.
 1. [Open the prompt builder](https://dvelton.github.io/knowledge-contribution-kit/).
 2. Describe what you are building and where the contributor's AI can read it.
 3. Generate and copy the contributor prompt.
-4. Send it to a willing teammate together with the target file or full text
-   unless their AI can access it directly.
+4. Send it to a willing teammate together with the project file or full text
+   unless their AI can access the current version directly.
 5. The teammate runs it in their own approved AI environment, reviews the
    resulting document, obtains the required human legal review, and decides
    whether to send it back.
@@ -37,17 +37,18 @@ builder enters.
 The [latest release](https://github.com/dvelton/knowledge-contribution-kit/releases/latest)
 also works from downloaded local files without a server.
 
-## Why the prompt is target-specific
+## Why the prompt is shaped to what you are building
 
 The generated prompt instructs the contributor's AI to:
 
-- read the current target before searching workplace context;
+- read the current version of the skill, agent, tool, checklist, or guide
+  before searching workplace context;
 - identify its existing domains, decision points, sources, boundaries, and
   output shape;
 - search only sources the contributor explicitly approves;
 - extract only the contributor's own knowledge;
-- keep only guidance that would materially improve this target;
-- compare every candidate with what the target already covers;
+- keep only guidance that would materially improve the project;
+- compare every candidate with what the project already covers;
 - preserve exceptions, disagreement, uncertainty, and possible staleness;
 - remove identities, quotations, links, matter details, and confidential
   facts; and
@@ -56,7 +57,7 @@ The generated prompt instructs the contributor's AI to:
 
 The prompt has no arbitrary candidate cap. It consolidates overlap, ranks the
 five to ten strongest items in an executive summary, and includes every
-distinct candidate that would materially improve the target. If none qualify,
+distinct candidate that would materially improve the project. If none qualify,
 it says so rather than padding the document.
 
 ## After contributions come back
@@ -64,7 +65,7 @@ it says so rather than padding the document.
 The page also generates a short synthesis prompt. The builder can use it to
 compare the returned contribution documents, identify overlap and
 disagreement, validate candidates against maintained sources, and prepare a
-change plan for the target.
+change plan for the project being built.
 
 Contributions are inputs for validation. Repetition does not turn a suggestion
 into policy or authority.

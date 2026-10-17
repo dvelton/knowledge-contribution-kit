@@ -5,31 +5,33 @@ const generator = require("../../web/assets/generator.js");
 
 const input = {
   projectName: "Support escalation assistant",
-  targetType: "agent",
+  projectType: "agent",
   purpose: "Help frontline teams prepare complete escalation summaries.",
-  targetAccess: "Read https://example.com/support-agent and the attached guide.",
+  projectMaterials: "Read https://example.com/support-agent and the attached guide.",
   preserve: "Keep the concise output and human escalation boundary.",
   focus: "This contributor sees unusual operational exceptions."
 };
 
-test("contributor prompt is shaped to the target", () => {
+test("contributor prompt is shaped to what the builder is creating", () => {
   const prompt = generator.buildContributionPrompt(input);
 
   [
     "Support escalation assistant",
+    "the agent the builder is creating",
     "Help frontline teams prepare complete escalation summaries",
     "https://example.com/support-agent",
     "Keep the concise output",
     "unusual operational exceptions",
-    "REVIEW THE TARGET FIRST",
-    "KEEP ONLY TARGET-SHAPED CONTRIBUTIONS",
-    "COMPARE EVERY CANDIDATE WITH THE CURRENT TARGET",
+    "REVIEW SUPPORT ESCALATION ASSISTANT FIRST",
+    "KEEP ONLY CONTRIBUTIONS THAT IMPROVE SUPPORT ESCALATION ASSISTANT",
+    "COMPARE EVERY CANDIDATE WITH SUPPORT ESCALATION ASSISTANT",
     "every distinct candidate",
     "Do not impose an arbitrary numerical\\s+limit",
     "five to ten highest-value",
     "If none qualify",
-    "Suggested target location or change"
+    "Suggested location or change in Support escalation assistant"
   ].forEach((expected) => assert.match(prompt, new RegExp(expected, "i")));
+  assert.doesNotMatch(prompt, /means the agent I am building/i);
 });
 
 test("contributor prompt controls source scope and private output", () => {
@@ -46,15 +48,15 @@ test("contributor prompt controls source scope and private output", () => {
   ].forEach((expected) => assert.match(prompt, new RegExp(expected, "i")));
 });
 
-test("prompt stops rather than guessing when target access is absent", () => {
+test("prompt stops rather than guessing when project material is absent", () => {
   const prompt = generator.buildContributionPrompt({
     projectName: "Example",
-    targetType: "skill",
+    projectType: "skill",
     purpose: "Do something useful"
   });
 
   assert.match(prompt, /Stop and ask me to provide it/i);
-  assert.match(prompt, /Do not infer the target/i);
+  assert.match(prompt, /Do not infer the project/i);
 });
 
 test("synthesis prompt validates rather than majority-votes", () => {
@@ -65,5 +67,5 @@ test("synthesis prompt validates rather than majority-votes", () => {
   assert.match(prompt, /maintained sources within the\s+confirmed scope/i);
   assert.match(prompt, /Do not\s+contact people/i);
   assert.match(prompt, /human lawyer at the\s+organization/i);
-  assert.match(prompt, /Do not modify the target yet/i);
+  assert.match(prompt, /Do not modify Support escalation assistant yet/i);
 });

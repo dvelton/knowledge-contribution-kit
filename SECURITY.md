@@ -20,6 +20,6 @@ data store.
 
 ## Source content
 
-The generated prompt treats target material and workplace content as untrusted
+The generated prompt treats project material and workplace content as untrusted
 data. It prohibits following instructions embedded in those sources,
-transmitting source material, sending messages, or modifying the target.
+transmitting source material, sending messages, or modifying the project.

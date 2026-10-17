@@ -105,12 +105,12 @@ def check_html():
     errors = 0
     if re.search(r"""<(?:script|link)[^>]+(?:src|href)=["']https?://""", html, re.I):
         errors += fail("index.html loads a remote script or stylesheet")
-    for target in re.findall(r"""(?:src|href)=["']([^"']+)["']""", html, re.I):
-        target = target.split("#", 1)[0]
-        if not target or target.startswith(("http://", "https://", "mailto:")):
+    for href in re.findall(r"""(?:src|href)=["']([^"']+)["']""", html, re.I):
+        href = href.split("#", 1)[0]
+        if not href or href.startswith(("http://", "https://", "mailto:")):
             continue
-        if not (ROOT / target).exists():
-            errors += fail(f"Broken local link in index.html: {target}")
+        if not (ROOT / href).exists():
+            errors += fail(f"Broken local link in index.html: {href}")
     return errors
 
 
@@ -118,10 +118,10 @@ def check_prompt_output():
     script = """
 const g = require('./web/assets/generator.js');
 const input = {
-  projectName: 'Example target',
-  targetType: 'agent',
+  projectName: 'Example project',
+  projectType: 'agent',
   purpose: 'Help users do a defined task.',
-  targetAccess: 'Read the attached instructions.',
+  projectMaterials: 'Read the attached instructions.',
   preserve: 'Keep the current concise format.',
   focus: 'Operational exceptions.'
 };
@@ -143,9 +143,9 @@ console.log(JSON.stringify({
     errors = 0
     required = [
         "CONFIRM MY SOURCE SCOPE",
-        "REVIEW THE TARGET FIRST",
-        "KEEP ONLY TARGET-SHAPED CONTRIBUTIONS",
-        "COMPARE EVERY CANDIDATE WITH THE CURRENT TARGET",
+        "REVIEW EXAMPLE PROJECT FIRST",
+        "KEEP ONLY CONTRIBUTIONS THAT IMPROVE EXAMPLE PROJECT",
+        "COMPARE EVERY CANDIDATE WITH EXAMPLE PROJECT",
         "PROTECT PRIVATE AND SENSITIVE INFORMATION",
         "human lawyer at my organization",
     ]

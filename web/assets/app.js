@@ -13,9 +13,9 @@
   function formValues() {
     return {
       projectName: document.querySelector("#project-name").value.trim(),
-      targetType: document.querySelector("#target-type").value,
+      projectType: document.querySelector("#project-type").value,
       purpose: document.querySelector("#project-purpose").value.trim(),
-      targetAccess: document.querySelector("#target-access").value.trim(),
+      projectMaterials: document.querySelector("#project-materials").value.trim(),
       preserve: document.querySelector("#preserve-behavior").value.trim(),
       focus: document.querySelector("#contributor-focus").value.trim()
     };
