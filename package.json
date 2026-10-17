@@ -1,0 +1,20 @@
+{
+  "name": "knowledge-contribution-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generate target-specific prompts that willing teammates can run in their own AI tools.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --test test/unit/*.test.js",
+    "test:e2e": "node --test test/e2e/*.test.js",
+    "validate": "python3 scripts/validate_project.py",
+    "build": "python3 scripts/build_release.py"
+  },
+  "devDependencies": {
+    "puppeteer-core": "25.13.0"
+  }
+}

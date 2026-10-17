@@ -1,0 +1,28 @@
+name: Improvement
+description: Suggest a clearer, safer, or more useful workflow.
+title: "[Improvement] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use fictional examples. Do not include workplace or customer content.
+  - type: textarea
+    id: user
+    attributes:
+      label: Who would this help?
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would it solve?
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+    validations:
+      required: true

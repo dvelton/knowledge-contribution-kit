@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Generate a target-specific prompt that willing teammates can run in their own AI tools."
+    >
+    <title>Knowledge Contribution Kit</title>
+    <link rel="stylesheet" href="web/assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#builder">Skip to the prompt builder</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="wordmark" href="index.html">Knowledge Contribution Kit</a>
+        <span class="local-badge">Runs in this browser</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <p class="eyebrow">For builders</p>
+            <h1>Get the prompt your teammates can run.</h1>
+            <p class="lede">
+              Describe the skill, agent, or tool you are building. Get a prompt
+              that a willing teammate can run in their own approved AI
+              environment to produce knowledge shaped specifically for your
+              project.
+            </p>
+            <p class="lede secondary">
+              You receive one reviewed contribution document, not their
+              private messages, email, or files.
+            </p>
+          </div>
+          <ol class="steps" aria-label="How it works">
+            <li>
+              <span>1</span>
+              <div>
+                <strong>Describe the target</strong>
+                <p>Tell the prompt builder what you are making and where the contributor's AI can read it.</p>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <strong>Send the prompt</strong>
+                <p>A willing teammate runs it in an AI tool approved by their organization.</p>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <strong>Receive a focused contribution</strong>
+                <p>The teammate reviews one document and decides whether to send it back.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="builder" class="builder-section">
+        <div class="shell builder-grid">
+          <form id="prompt-form" class="form-card" autocomplete="off">
+            <div class="section-heading">
+              <p class="eyebrow">Create the prompt</p>
+              <h2>What are you building?</h2>
+              <p>
+                Everything stays in this browser tab. Required fields are
+                marked.
+              </p>
+            </div>
+
+            <label>
+              Project name <span aria-hidden="true">*</span>
+              <input
+                id="project-name"
+                required
+                placeholder="Support escalation assistant"
+              >
+            </label>
+
+            <label>
+              Target type <span aria-hidden="true">*</span>
+              <select id="target-type" required>
+                <option value="skill">Skill</option>
+                <option value="agent">Agent</option>
+                <option value="tool">Tool</option>
+                <option value="checklist">Checklist or guide</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label>
+              What should it help people do? <span aria-hidden="true">*</span>
+              <textarea
+                id="project-purpose"
+                required
+                placeholder="Help frontline support teams prepare concise, complete escalation summaries."
+              ></textarea>
+            </label>
+
+            <label>
+              Where can the contributor's AI read the current target?
+              <span aria-hidden="true">*</span>
+              <textarea
+                id="target-access"
+                required
+                placeholder="Paste the full current text, identify files you will attach when sending the prompt, or provide a location the contributor's AI can access."
+              ></textarea>
+              <small>
+                A summary alone is not enough when a fuller target exists. Send
+                the target file or full text with the generated prompt if the
+                contributor's AI cannot access it directly.
+              </small>
+            </label>
+
+            <label>
+              What useful behavior should not materially change?
+              <textarea
+                id="preserve-behavior"
+                placeholder="Keep the concise answer format and existing human-escalation boundary."
+              ></textarea>
+            </label>
+
+            <label>
+              Optional contributor focus
+              <textarea
+                id="contributor-focus"
+                placeholder="This teammate is especially knowledgeable about unusual escalations and operational exceptions."
+              ></textarea>
+            </label>
+
+            <div class="legal-note">
+              Before inviting contributors, sharing a contribution, or using
+              workplace data, have a human lawyer at your organization review
+              the process, contribution, intended data use, and sharing plan.
+            </div>
+
+            <button class="primary-button" type="submit">
+              Generate contributor prompt
+            </button>
+          </form>
+
+          <section id="result-card" class="result-card">
+            <div id="empty-result" class="empty-result">
+              <p class="eyebrow">Your result</p>
+              <h2>One prompt, shaped for your project.</h2>
+              <p>
+                Complete the form to generate the exact prompt to send to a
+                willing knowledge contributor.
+              </p>
+            </div>
+
+            <div id="generated-result" hidden>
+              <div class="result-heading">
+                <div>
+                  <p class="eyebrow">Ready to send</p>
+                  <h2>Contributor prompt</h2>
+                </div>
+                <div class="button-row">
+                  <button id="copy-prompt" class="secondary-button" type="button">
+                    Copy
+                  </button>
+                  <button id="download-prompt" class="secondary-button" type="button">
+                    Download
+                  </button>
+                </div>
+              </div>
+
+              <p class="send-note">
+                Send this prompt to a willing teammate. They run it in an
+                approved AI tool, review the resulting document, obtain human
+                legal review, and decide whether to return it. Also send the
+                target file or full text unless their AI can access it directly.
+                If the prompt is too long to paste, send the downloaded text
+                file as an attachment.
+              </p>
+              <span id="copy-status" class="sr-only" aria-live="polite"></span>
+              <pre id="prompt-output" tabindex="0"></pre>
+
+              <details class="synthesis">
+                <summary>I received contribution documents. What now?</summary>
+                <p>
+                  Put the reviewed documents in one folder and use this prompt
+                  to prepare a proposed change plan.
+                </p>
+                <div class="button-row">
+                  <button id="copy-synthesis" class="secondary-button" type="button">
+                    Copy synthesis prompt
+                  </button>
+                  <button id="download-synthesis" class="secondary-button" type="button">
+                    Download
+                  </button>
+                </div>
+                <pre id="synthesis-output" tabindex="0"></pre>
+              </details>
+
+              <button id="start-over" class="text-button" type="button">
+                Create another prompt
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-inner">
+        <p>Open source under the MIT License.</p>
+        <nav aria-label="Footer">
+          <a href="https://github.com/dvelton/knowledge-contribution-kit">GitHub</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="web/assets/generator.js"></script>
+    <script src="web/assets/app.js"></script>
+  </body>
+</html>
