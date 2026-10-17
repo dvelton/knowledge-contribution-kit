@@ -24,7 +24,9 @@ test("contributor prompt is shaped to the target", () => {
     "REVIEW THE TARGET FIRST",
     "KEEP ONLY TARGET-SHAPED CONTRIBUTIONS",
     "COMPARE EVERY CANDIDATE WITH THE CURRENT TARGET",
-    "up to fifteen",
+    "every distinct candidate",
+    "Do not impose an arbitrary numerical\\s+limit",
+    "five to ten highest-value",
     "If none qualify",
     "Suggested target location or change"
   ].forEach((expected) => assert.match(prompt, new RegExp(expected, "i")));

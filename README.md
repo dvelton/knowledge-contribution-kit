@@ -49,9 +49,10 @@ The generated prompt instructs the contributor's AI to:
 - produce one focused Word document with suggested improvements and insertion
   points.
 
-The prompt allows up to fifteen strong candidates, and fewer or none when fewer
-qualify. It does not ask for a comprehensive summary of everything the
-teammate knows.
+The prompt has no arbitrary candidate cap. It consolidates overlap, ranks the
+five to ten strongest items in an executive summary, and includes every
+distinct candidate that would materially improve the target. If none qualify,
+it says so rather than padding the document.
 
 ## After contributions come back
 
