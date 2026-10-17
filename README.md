@@ -1,15 +1,20 @@
 # Knowledge Contribution Kit
 
-Knowledge Contribution Kit gives a builder one prompt they can send to a
-willing teammate.
+> **Large corpora provide breadth. The right teammates contribute judgment.**
 
-The teammate runs the prompt in an AI tool approved by their organization. The
-AI reads the skill, agent, guide, or other tool being built, then searches the
-teammate's permitted context for knowledge that would materially improve that
-specific tool.
+## Why this exists
 
-The teammate returns one reviewed contribution document. The builder does not
-need the underlying messages, email, or documents.
+Large document collections can give an AI tool broad coverage, but they also
+contain substantial noise. The practical judgment that makes a skill or agent
+useful may sit with a small number of teammates who already do the work well,
+often in private day-to-day context that should not simply be handed to the
+builder.
+
+Knowledge Contribution Kit gives builders one prompt tailored to the target,
+which they can send to willing teammates. Each contributor runs it in their
+own approved AI environment and returns one reviewed document of generalized
+guidance shaped to the tool being built, without handing over the underlying
+messages, email, or files.
 
 > Before inviting contributors, sending a contribution, or using workplace
 > data, have a human lawyer at your organization review the process,
